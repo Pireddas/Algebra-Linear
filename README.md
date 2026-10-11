@@ -101,10 +101,6 @@ $$\boxed{X\vec{\beta} = \vec{y}}$$
 
 $$\downarrow$$
 
-$$\boxed{\vec{\beta} = \frac{\vec{y}}{X}}$$
-
-$$\downarrow$$
-
 $$\boxed{\vec{\beta} = X^{-1} \vec{y}}$$
 
 Exemplo:
