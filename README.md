@@ -64,7 +64,7 @@ Em problemas financeiros, tensores podem representar informações organizadas e
 
 <br>
 
-Regressão Linear
+## ***Regressão Linear***
 
 A regressão linear é um dos pilares da estatística e da aprendizagem de máquina, servindo como ponto de partida para a modelagem preditiva. Em sua forma simples, o objetivo é encontrar a melhor reta que descreve a relação entre uma única variável independente ($x$) e uma variável resposta ($y$).  
 
@@ -79,7 +79,7 @@ Neste artigo, vou explorar passo a passo a dedução matemática do **Método do
 
 <br>
 
-Estimativa dos mínimos quadrados
+## ***Estimativa dos mínimos quadrados***
 
 A **Estimativa de Mínimos Quadrados Ordinários (MQO)** — ou *Ordinary Least Squares (OLS)* — é o método matemático utilizado para determinar os parâmetros da reta de regressão, buscando o melhor ajuste possível aos dados observados. O objetivo central é minimizar a soma das distâncias verticais elevadas ao quadrado entre os pontos reais e a reta estimada (os chamados resíduos $e_i$).
 
@@ -88,7 +88,7 @@ A **Estimativa de Mínimos Quadrados Ordinários (MQO)** — ou *Ordinary Least 
 *Photo by [Sociedade Brasileira de Física](https://www.sbfisica.org.br/) on 
 [https://www.sbfisica.org.br/](https://www.sbfisica.org.br/)*
 
-Equação linear em forma matricial
+## ***Equação linear em forma matricial***
 
 Toda equação linear pode ser escrita em forma de matriz, e isso
 facilita muito o desenvolvimento de códigos computacionais.
@@ -132,16 +132,15 @@ x_3
 }_{\text{Constantes}}
 $$
 
-Solução Matricial por Mínimos Quadrados
+## ***Solução Matricial por Mínimos Quadrados***
 
 Quando lidamos com um sistema linear sobredeterminado $X\vec{\beta} \approx \vec{y}$ (com mais equações do que incógnitas), em geral não existe uma solução exata em que a diferença seja nula. Nesses casos, o objetivo é encontrar o vetor de incógnitas $\vec{\beta}$ que minimiza a norma do vetor de resíduos $\vec{e}$.
 
-Formulação do Erro Residual
+## ***Formulação do Erro Residual***
 
 A relação entre os valores estimados e observados é dada por:
 
 $$\boxed{X\vec{\beta} - \vec{y} = \vec{e}}$$
-
 
 Sendo:  
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -169,7 +168,7 @@ $$\boxed{E^2 = \beta^T X^T X \vec{\beta} - 2\beta^T X^T \vec{y} + y^T\vec{y}}$$
 
 (Nota: o termo $-2\beta^T X^T y$ surge pois $\beta^T X^T \vec{y}$ é um escalar, sendo igual à sua transposta $y^T X \vec{\beta}$).
 
-Minimização e Obtenção da Equação Normal
+## ***Minimização e Obtenção da Equação Normal***
 
 O valor mínimo de $E^2$ ocorre no ponto em que a derivada em relação ao vetor de incógnitas $\vec{\beta}$ é igual a zero:
 
