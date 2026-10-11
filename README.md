@@ -646,7 +646,256 @@ Assim, a equação pode expressar o valor real em função da estimativa mais o 
 $$\boxed{y=\underbrace{\beta_0 x_0+\beta_1 x_1+\beta_2 x_2}_{\text{Componente Determinístico}}+\cdots+\beta_n x_n+\underbrace{\epsilon}_{\text{Erro Estocástico}}}$$
 
 <br>
+
+## Regressão Linear Múltipla com Intercepto ($\beta_0$) 
+
+Dado o seguinte conjunto de dados, em que adicionamos a coluna de uns $x_0$ para cálculo do intercepto:
+
+
+<div align="center">  
+
+**Conjunto de dados (Observações)**
+
+|       | <div align="center" style="width: 100px;">$x0$</div> | <div align="center" style="width: 100px;">$x1$</div> | <div align="center" style="width: 100px;">$x2$</div> | <div align="center" style="width: 100px;">$y$</div> |
+| :---: | :---: | :---: | :---: | :---: |
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;120&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+|   1   |1|13|90|6.8|
+|   2   |1|20|120|7.0|
+|   3   |1|28|60|7.4|
+|   4   |1|20|150|9.3|
+|   5   |1|24|150|7.5|
+|   6   |1|18|60|7.6|
+|   7   |1|8 |120|8.0|
+|   8   |1|2 |240|7.0|
+|   9   |1|12|90|7.3|
+|  10   |1|15|90|8.6|
+|  11   |1|9 |120|8.3|
+|  12   |1|6 |180|7.9|
+|  13   |1|4 |90|6.4|
+|  14   |1|8 |150|7.8|
+|  15   |1|12|120|9.4|
+|  16   |1|10|180|8.8|
+|  17   |1|3 |90|6.9|
+|  18   |1|15|180|7.7|
+|  19   |1|9 |90|8.2|
+|  20   |1|24|120|8.6|
+|  21   |1|5 |150|8.1|
+|  22   |1|7 |120|7.2|
+|  23   |1|12|180|8.5|
+|  24   |1|2 |90|6.1|
+
+</div>
 <br>
+
+Nesse caso, temos 25 observações e três variáveis explicativas  (incluindo o termo constante). Portanto, o sistema possui 25 equações, 3 incógnitas ($\beta_0$, $\beta_1$ e $\beta_2$) e um vetor de constantes $\vec{y}_{25\times1}$:
+
+Representação matricial com intercepto:
+
+$$
+\begin{bmatrix}
+1 & 5 & 120\\
+1 & 13 & 90\\
+1 & 20 & 120\\
+\vdots & \vdots & \vdots\\
+1 & 2 & 90
+\end{bmatrix}
+\begin{bmatrix}
+\beta_0\\
+\beta_1\\
+\beta_2
+\end{bmatrix}
+\approx
+\begin{bmatrix}
+8.1\\
+6.8\\
+7.0\\
+\vdots\\
+6.1
+\end{bmatrix}
+$$
+
+<br>
+
+Ou de forma explícita:
+
+$$
+\boxed{
+X_{25\times3}\,
+\vec{\beta}_{3\times1}\approx\vec{y}_{25\times1}
+}
+$$
+  
+<br>
+
+Em que:
+* $X$ é uma matriz $25\times3$;
+* $\vec{\beta}$ é um vetor $3\times1$, contendo as três incógnitas;
+* $\vec{y}$ é um vetor $25\times1$, contendo os 25 valores observados;
+* O produto $X\vec{\beta}$ resulta em um vetor $25\times1$.
+  
+<br>
+
+Utilizamos o **Método dos Mínimos Quadrados Ordinários (MQO)** para encontrar o vetor de estimadores $\vec{\hat{\beta}}$ aplicando a solução matricial:
+
+$$\boxed{\vec{\beta}=(X^TX)^{-1}X^T\vec{y}}$$
+
+<br>
+
+## Transposição da matriz $X$
+
+Primeiramente, calculamos a transposta de $X$, que transforma suas linhas em colunas:
+
+$$X^T= \begin{bmatrix} 
+1 & 1 & 1 & 1 & \cdots & 1\\
+5 & 13 & 20 & 28 & \cdots & 2\\ 
+120 & 90 & 120 & 60 & \cdots & 90 
+\end{bmatrix}$$
+
+<br>
+
+## Cálculo de $X^TX$
+
+A multiplicação de $X^T$ por $X$ resulta em uma matriz quadrada $3\times3$:
+
+$$
+X^TX=\begin{bmatrix} 
+1 & 1 & 1 & 1 & \cdots & 1\\
+5 & 13 & 20 & 28 & \cdots & 2\\ 
+120 & 90 & 120 & 60 & \cdots & 90 
+\end{bmatrix}
+\begin{bmatrix}
+1 & 5 & 120\\
+1 & 13 & 90\\
+1 & 20 & 120\\
+\vdots & \vdots & \vdots\\
+1 & 2 & 90
+\end{bmatrix}
+$$
+
+$$\downarrow$$
+
+$$X^TX= \begin{bmatrix} 
+\sum x_0^2 & \sum x_0x_1 & \sum x_0x_2\\ 
+\sum x_1x_0 & \sum x_1^2 & \sum x_1x_2\\
+\sum x_2x_0 & \sum x_2x_1 & \sum x_2^2
+\end{bmatrix}$$ 
+
+$$\downarrow$$
+
+$$
+\boxed{
+\begin{aligned}
+&\sum x_0^2=1^2+1^2+1^2+\cdots+1^2=25\\
+&\sum x_0x_1=(1)(5)+(1)(13)+(1)(20)+\cdots+(1)(2)=291\\
+&\sum x_0x_2=(1)(120)+(1)(90)+(1)(120)+\cdots+(1)(90)=3150\\
+&\space\\
+&\space\\
+&\space\\
+&\sum x_1x_0=(5)(1)+(13)(1)+(20)(1)+\cdots+(2)(1)=291\\
+&\sum x_1^2=5^2+13^2+20^2+\cdots+2^2=4669\\
+&\sum x_1x_2=(5)(120)+(13)(90)+(20)(120)+\cdots+(2)(90)=34950\\
+&\space\\
+&\space\\
+&\space\\
+&\sum x_2x_0=(120)(1)+(90)(1)+(120)(1)+\cdots+(90)(1)=3150\\
+&\sum x_2x_1=(120)(5)+(90)(13)+(120)(20)+\cdots+(90)(2)=34950\\
+&\sum x_2^2=120^2+90^2+120^2+\cdots+90^2=441900
+\end{aligned}
+}
+$$
+
+$$\downarrow$$
+
+$$X^TX= \begin{bmatrix} 
+25 & 291 & 3150\\ 
+291 & 4669 & 34950\\ 
+3150 & 34950 & 441900 
+\end{bmatrix}$$
+
+<br>
+
+## Cálculo de $X^T\vec{y}$
+
+De forma semelhante, calculamos o produto entre $X^T$ e o vetor de valores observados $\vec{y}$:
+
+$$
+X^T\vec{y}=\begin{bmatrix} 
+1 & 1 & 1 & 1 & \cdots & 1\\ 
+5 & 13 & 20 & 28 & \cdots & 2\\ 
+120 & 90 & 120 & 60 & \cdots & 90 
+\end{bmatrix}
+\begin{bmatrix}
+8.1\\
+6.8\\
+7.0\\
+\vdots\\
+6.1
+\end{bmatrix}
+$$
+
+$$\downarrow$$
+
+$$X^T\vec{y}=\begin{bmatrix} 
+\sum x_0y\\ 
+\sum x_1y\\ 
+\sum x_2y
+\end{bmatrix}$$
+
+$$\downarrow$$
+
+$$
+\boxed{
+\begin{aligned}
+&\sum x_0y=(1)(8.1)+(1)(6.8)+(1)(7.0)+\cdots+(1)(6.1)=194.5\\
+&\sum x_1y=(5)(8.1)+(13)(6.8)+(20)(7.0)+\cdots+(2)(6.1)=2305.9\\
+&\sum x_2y=(120)(8.1)+(90)(6.8)+(120)(7.0)+\cdots+(90)(6.1)=24726
+\end{aligned}}
+$$
+
+$$\downarrow$$
+
+$$X^T\vec{y}=\begin{bmatrix} 
+194.5\\
+2305.9\\ 
+24726 
+\end{bmatrix}$$
+  
+<br>
+
+O sistema normal de equações assume a seguinte forma:
+
+$$\vec{\hat{\beta}}=(X^TX)^{-1}X^T\vec{y}$$
+  
+$$\downarrow$$
+
+$$\vec{\hat{\beta}}=\begin{bmatrix} 
+25 & 291 & 3150\\ 
+291 & 4669 & 34950\\ 
+3150 & 34950 & 441900  
+\end{bmatrix}^{-1} 
+\begin{bmatrix} 
+194.5\\
+2305.9\\ 
+24726 
+\end{bmatrix}$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
