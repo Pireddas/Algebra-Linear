@@ -68,7 +68,7 @@ Em problemas financeiros, tensores podem representar informações organizadas e
 
 A regressão linear é um dos pilares da estatística e da aprendizagem de máquina, servindo como ponto de partida para a modelagem preditiva. Em sua forma simples, o objetivo é encontrar a melhor reta que descreve a relação entre uma única variável independente ($x$) e uma variável resposta ($y$).  
 
-Embora frameworks modernos permitam ajustar esse modelo com apenas uma linha de código, entender a mecânica por trás da minimização dos erros é o que diferencia quem apenas aplica algoritmos de quem realmente domina a modelagem.  
+Embora frameworks permitam ajustar esse modelo com apenas uma linha de código, entender os cálculos por trás da minimização dos erros é um grande diferencial na aplicação das técnicas na modelagem estatística.  
 
 Neste artigo, vou explorar passo a passo a dedução matemática do **Método dos Mínimos Quadrados Ordinários (MQO)** e realizar todos os cálculos manualmente para construir uma intuição sólida sobre como o modelo aprende a partir dos dados.
 
