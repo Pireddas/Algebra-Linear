@@ -134,7 +134,7 @@ $$
 
 ## ***Solução Matricial por Mínimos Quadrados***
 
-Quando lidamos com um sistema linear sobredeterminado $X\vec{\beta} \approx \vec{y}$ (com mais equações do que incógnitas), em geral não existe uma solução exata em que a diferença seja nula. Nesses casos, o objetivo é encontrar o vetor de incógnitas $\vec{\beta}$ que minimiza a norma do vetor de resíduos $\vec{e}$.
+Quando lidamos com um sistema linear sobredeterminado $X\vec{\beta} \approx \vec{y}$ (com mais equações do que incógnitas), em geral não existe uma solução exata em que a diferença seja nula. Nesses casos, o objetivo é encontrar o vetor de incógnitas $\vec{\beta}$ que minimiza a norma do vetor de resíduos $\vec{e}.$
 
 ## ***Formulação do Erro Residual***
 
@@ -176,7 +176,7 @@ $$\boxed{\frac{dE^2}{d\vec{\beta}} = 2 X^T X \vec{\beta} - 2 X^T \vec{y} = \math
 $$\downarrow$$
 $$\boxed{2 X^T X \vec{\beta} = 2 X^T \vec{y}}$$
 
-Isolando o vetor $\vec{\beta}$ através da multiplicação pela matriz inversa $(X^T X)^{-1}$ — desde que $X^TX$ seja invertível —, chega-se à **Estimativa dos Mínimos Quadrados**:
+Isolando o vetor $\vec{\beta}$ através da multiplicação pela matriz inversa $(X^T X)^{-1}$ (desde que $X^TX$ seja invertível), chega-se à **Estimativa dos Mínimos Quadrados**:
 
 $$\boxed{\vec{\beta} = (X^T X)^{-1} X^T \vec{y}}$$
 
