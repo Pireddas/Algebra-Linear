@@ -101,6 +101,10 @@ $$\boxed{X\vec{\beta} = \vec{y}}$$
 
 $$\downarrow$$
 
+$$\boxed{\vec{\beta} = \frac{\vec{y}}{X}}$$
+
+$$\downarrow$$
+
 $$\boxed{\vec{\beta} = X^{-1} \vec{y}}$$
 
 Exemplo:
@@ -167,6 +171,10 @@ $$
 Expansão da expressão matricial utilizando as propriedades da transposta $(X\vec{\beta})^T = \beta^T X^T$:
 
 $$\boxed{E^2 = (\beta^T X^T - y^T)(X\vec{\beta} - \vec{y})}$$
+
+$$\downarrow$$
+
+$$E^2 = (\beta^T X^T X\vec{\beta}) - (\beta^T X^T \vec{y}) - (y^T X\vec{\beta}) + (y^T \vec{y})$$
 
 $$\downarrow$$
 
