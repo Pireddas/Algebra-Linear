@@ -60,7 +60,7 @@ Um tensor é uma estrutura matemática que generaliza escalares, vetores e matri
 
 Um exemplo clássico na **Ciência de Dados** é o processamento de imagens coloridas, que consiste na representação da imagem por um tensor de ordem 3 $(\text{altura} \times \text{largura} \times \text{canais de cor})$, em que os canais correspondem às camadas RGB (Red, Green, Blue).  
 <br>
-Em problemas financeiros, tensores podem representar informações organizadas em múltiplas dimensões, como clientes, safras de originação, períodos de acompanhamento (aging) e variáveis comportamentais. Essa estrutura preserva relações temporais e comportamentais dos dados, possibilitando a aplicação de modelos para monitoramento de carteiras, otimização das estratégias de cobrança, previsão de inadimplência e recuperação de créditos.
+Em problemas financeiros, tensores podem representar informações organizadas em múltiplas dimensões, como clientes, safras de originação, períodos de acompanhamento (aging) e variáveis comportamentais. Essa estrutura preserva relações temporais e comportamentais dos dados, possibilitando a aplicação de técnicas estatísticas de análise multivariada para monitoramento de carteiras, otimização das estratégias de cobrança, identificação de padrões de inadimplência e avaliação dos processos de recuperação de crédito.
 
 <br>
 
