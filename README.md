@@ -103,7 +103,7 @@ $$\boxed{\vec{\beta} = X^{-1} \vec{y}}$$
 
 Exemplo:
 
-Dado um Conjunto de dados (Observações) com 3 variáveis independente ($x1$, $x2$ e $x3$) e uma variável dependentes ($y$):
+Dado um Conjunto de dados (Observações) com 3 variáveis independente ($x1$, $x2$ e $x3$) e uma variável dependentes $(y):$
 
 $$
 \begin{cases}
