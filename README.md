@@ -349,9 +349,300 @@ $$X^TX= \begin{bmatrix}
 34950 & 441900 
 \end{bmatrix}$$
 
+<br>
 
+## Cálculo de $X^T\vec{y}$
 
+De forma semelhante, calculamos o produto entre $X^T$ e o vetor de valores observados $\vec{y}$:
 
+$$
+X^T\vec{y}=\begin{bmatrix} 
+5 & 13 & 20 & 28 & \cdots & 2\\ 
+120 & 90 & 120 & 60 & \cdots & 90 
+\end{bmatrix}
+\begin{bmatrix}
+8.1\\
+6.8\\
+7.0\\
+\vdots\\
+6.1
+\end{bmatrix}
+$$
+
+$$\downarrow$$
+
+$$X^T\vec{y}=\begin{bmatrix} 
+\sum x_0y\\ 
+\sum x_1y 
+\end{bmatrix}$$
+
+$$\downarrow$$
+
+$$
+\boxed{
+\begin{aligned}
+\sum x_0y
+&=(5)(8.1)+(13)(6.8)+(20)(7.0)+\cdots+(2)(6.1)\\
+\sum x_1y
+&=(120)(8.1)+(90)(6.8)+(120)(7.0)+\cdots+(90)(6.1)
+\end{aligned}}
+$$
+
+$$\downarrow$$
+
+$$X^T\vec{y}=\begin{bmatrix} 
+2305.9\\ 
+24726 
+\end{bmatrix}$$
+  
+<br>
+
+Dessa forma, a expressão
+
+$$(X^TX)^{-1}X^T\vec{y}$$
+  
+<br>
+
+pode ser escrita, neste caso, como:
+
+$$\vec{\beta}=\begin{bmatrix} 
+4669 & 34950\\ 
+34950 & 441900 
+\end{bmatrix}^{-1} 
+\begin{bmatrix} 
+2305.9\\ 
+24726 
+\end{bmatrix}$$
+  
+<br>
+
+## Cálculo da matriz inversa $(X^TX)^{-1}$
+
+Para uma matriz $2\times2$ da forma
+
+$$
+A=\begin{bmatrix}
+a & b\\
+c & d
+\end{bmatrix},
+$$
+  
+<br>
+
+Desde que $ad-bc\neq0$, sua inversa é dada por:
+
+$$
+A^{-1}=\frac{1}{ad-bc}
+\begin{bmatrix}
+d & -b\\
+-c & a
+\end{bmatrix},
+$$
+
+<br>
+Sabendo que:
+
+* $a = 4669$;
+* $b = 34950$;
+* $c = 34950$;
+* $d = 441900$.
+  
+O determinante de $X^TX$ é:
+
+$$
+(X^TX)^{-1}=\frac{1}{\det(X^TX)}
+\begin{bmatrix}
+441900 & -34950\\
+-34950 & 4669
+\end{bmatrix},
+$$
+
+$$\downarrow$$
+
+$$
+\det(X^TX)=(4669 \times 441900)-(-34950)^2=841.728.600
+$$
+  
+$$\downarrow$$
+
+$$
+(X^TX)^{-1}=\frac{1}{841.728.600}
+\begin{bmatrix}
+441900 & -34950\\
+-34950 & 4669
+\end{bmatrix}
+\approx
+\begin{bmatrix}
+0.0005250 & -0.00004152\\
+-0.00004152 & 0.000005546
+\end{bmatrix}
+$$
+
+<br>
+
+## Obtenção de $\beta_1$ e $\beta_2$
+
+Finalmente, realizamos a multiplicação de $(X^TX)^{-1}$ por $X^T\vec{y}$:
+
+$$
+\vec{\beta}=(X^TX)^{-1}X^T\vec{y}
+$$
+
+$$
+\vec{\beta}=\begin{bmatrix}
+0.0005250 & -0.00004152\\
+-0.00004152 & 0.000005546
+\end{bmatrix}
+\begin{bmatrix}
+2305.9\\
+24726
+\end{bmatrix}
+$$
+  
+$$\downarrow$$
+
+$$
+\vec{\beta}\approx\begin{bmatrix}
+0.1839\\
+0.0414
+\end{bmatrix}
+$$
+  
+<br>
+
+Portanto, os coeficientes estimados pelo Método dos Mínimos Quadrados são:
+
+$$\boxed{\beta_1\approx0.1839}$$
+
+$$\boxed{\beta_2\approx0.0414}$$
+  
+<br>
+
+Assim, para a Matriz de Observações $X$, a equação estimada pelo modelo é:
+
+$$
+X=\begin{bmatrix}
+5 & 120\\
+13 & 90\\
+20 & 120\\
+\vdots & \vdots\\
+2 & 90
+\end{bmatrix}
+$$
+
+$$\boxed{\hat y_i=0.1839x_{i0}+0.0414x_{i1}}$$
+
+<br>
+
+Esse procedimento mostra como a solução matricial transforma o conjunto de dados em dois coeficientes que definem o modelo de regressão.
+
+<br>
+
+## Resultado  
+
+<div align=center>
+
+|       | <div align="center" style="width: 90px;">$x1$</div> | <div align="center" style="width: 90px;">$x2$</div> | <div align="center" style="width: 90px;">$y$</div> | <div align="center" style="width: 90px;">Previsão ($\hat y$)</div> | <div align="center" style="width: 180px;">Resíduo ($y - \hat y$)</div> | <div align="center" style="width: 95px;">Erro Absoluto</div> |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;120&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.888545&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.21145525&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.211455&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+|   1   |13|90|6.8|6.117589 |0.68241071|0.682411|
+|   2   |20|120|7.0|8.647216 |-1.6472162|1.647216|
+|   3   |28|60|7.4|7.634014 |-0.23401384|0.234014|
+|   4   |20|150|9.3|9.889463 |-0.5894631|0.589463|
+|   5   |24|150|7.5|10.625109|-3.12510882|3.125109|
+|   6   |18|60|7.6|5.794900 |1.80510046|1.805100|
+|   7   |8 |120|8.0|6.440279 |1.55972096|1.559721|
+|   8   |2 |240|7.0|10.305798|-3.30579806|3.305798|
+|   9   |12|90|7.3|5.933678 |1.36632214|1.366322|
+|  10   |15|90|8.6|6.485412 |2.11458785|2.114588|
+|  11   |9 |120|8.3|6.624190 |1.67580953|1.675810|
+|  12   |6 |180|7.9|8.556950 |-0.65694998|0.656950|
+|  13   |4 |90|6.4|4.462386 |1.93761358|1.937614|
+|  14   |8 |150|7.8|7.682526 |0.11747406|0.117474|
+|  15   |12|120|9.4|7.175925 |2.22407524|2.224075|
+|  16   |10|180|8.8|9.292596 |-0.4925957|0.492596|
+|  17   |3 |90|6.9|4.278475 |2.62152501|2.621525|
+|  18   |15|180|7.7|10.212153|-2.51215285|2.512153|
+|  19   |9 |90|8.2|5.381944 |2.81805643|2.818056|
+|  20   |24|120|8.6|9.382862 |-0.78286192|0.782862|
+|  21   |5 |150|8.1|7.130792 |0.96920835|0.969208|
+|  22   |7 |120|7.2|6.256368 |0.94363239|0.943632|
+|  23   |12|180|8.5|9.660419 |-1.16041856|1.160419|
+|  24   |2 |90|6.1|4.094564 |2.00543644|2.005436|
+
+<br>
+
+Erro médio absoluto (MAE): **1.58236029**
+
+</div>
+
+---
+
+<div>
+
+### Representação Gráfica 
+
+<div style="display: flex; gap: 10px;">
+
+<img width="450" height="300" alt="image" src="https://github.com/user-attachments/assets/f5c15f09-405c-45fc-82c8-f5531785f8f1" />
+<img width="450" height="300" alt="image" src="https://github.com/user-attachments/assets/b95b0032-9df8-45f9-94ad-05986fa95dce" />
+ 
+*Photo by [Ralf Piredda](https://www.sbfisica.org.br/)*
+
+</div>
+
+<br>
+
+### Conclusão
+
+Embora tenhamos obtido uma solução matemática para o sistema, o modelo $\hat{y} = 0.1839x_0 + 0.0414x_1$ apresenta uma limitação.
+
+Num cenário em que as variáveis explicativas apresentem valor zero ($x_0 = 0$ e $x_1 = 0$), o modelo prevê um **valor zero** para a previsão.
+
+$$\hat{y}=0.1839(0) + 0.0414(0)=0$$
+
+Para corrigir esse viés e refletir a realidade, o próximo passo é evoluir o modelo para uma **Regressão Linear** com um termo constante independente $\beta_0$ - **intercepto**.
+
+A nova equação estimada assume a seguinte forma:
+
+$$\hat{y}=\beta_0 x_0+\beta_1 x_1+\beta_2 x_2$$
+
+Ao introduzirmos o termo $\beta_0$, garantimos que, quando todas as variáveis explicativas forem nulas ($x_1=0$ e $x_2=0$), o resultado estimado não seja forçado a zero, mas sim ao valor da constante $\beta_0$:
+
+$$\hat{y}=\beta_0(1)+\beta_1(0)+\beta_2(0)=\beta_0$$
+
+Esse coeficiente $\beta_0$ atua como um "piso" ou "nota base" do modelo.
+
+<br>
+
+Além da ausência do intercepto ($\beta_0$), o modelo puramente determinístico ($\hat{y} = \beta_1x_0 + \beta_2x_1$) não leva em consideração as oscilações aleatórias inerentes aos dados reais. Na prática, a variável resposta $y$ é influenciada por fatores não observados, erros de medição e variações estocásticas.
+
+Para proteger o sistema dos riscos ligados a essa exposição, a **Regressão Linear Múltipla** introduz duas modificações fundamentais:
+1. A inclusão de uma coluna de uns ($1s$) na Matriz de Projeto $X$, permitindo estimar o termo constante $\beta_0$;
+
+$$X_{25\times3}= \begin{bmatrix} 
+1 & 5 & 120 \\ 
+1 & 13 & 90 \\ 
+1 & 20 & 120 \\ 
+\vdots & \vdots & \vdots \\ 
+1 & 2 & 90 
+\end{bmatrix}, 
+\quad\vec{\beta}_{3\times1}= \begin{bmatrix}
+\beta_0 \\ 
+\beta_1 \\ 
+\beta_2 
+\end{bmatrix}$$
+
+2. A formalização do erro estocástico $\epsilon$, assumindo premissas estatísticas (como média zero, homocedasticidade e ausência de autocorrelação) que viabilizam a inferência estatística e testes de hipóteses.
+
+<br>
+
+Assim, a equação pode expressar o valor real em função da estimativa mais o resíduo:
+
+$$\boxed{y=\underbrace{\beta_0 x_0+\beta_1 x_1+\beta_2 x_2}_{\text{Componente Determinístico}}+\cdots+\beta_n x_n+\underbrace{\epsilon}_{\text{Erro Estocástico}}}$$
+
+<br>
+<br>
 
 
 
