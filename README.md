@@ -88,6 +88,8 @@ A **Estimativa de Mínimos Quadrados Ordinários (MQO)** — ou *Ordinary Least 
 *Photo by [Sociedade Brasileira de Física](https://www.sbfisica.org.br/) on 
 [https://www.sbfisica.org.br/](https://www.sbfisica.org.br/)*
 
+<br>
+
 ## ***Equação linear em forma matricial***
 
 Toda equação linear pode ser escrita em forma de matriz, e isso
@@ -132,9 +134,13 @@ x_3
 }_{\text{Constantes}}
 $$
 
+<br>
+
 ## ***Solução Matricial por Mínimos Quadrados***
 
 Quando lidamos com um sistema linear sobredeterminado $X\vec{\beta} \approx \vec{y}$ (com mais equações do que incógnitas), em geral não existe uma solução exata em que a diferença seja nula. Nesses casos, o objetivo é encontrar o vetor de incógnitas $\vec{\beta}$ que minimiza a norma do vetor de resíduos $\vec{e}.$
+
+<br>
 
 ## ***Formulação do Erro Residual***
 
@@ -168,6 +174,8 @@ $$\boxed{E^2 = \beta^T X^T X \vec{\beta} - 2\beta^T X^T \vec{y} + y^T\vec{y}}$$
 
 (Nota: o termo $-2\beta^T X^T y$ surge pois $\beta^T X^T \vec{y}$ é um escalar, sendo igual à sua transposta $y^T X \vec{\beta}$).
 
+<br>
+
 ## ***Minimização e Obtenção da Equação Normal***
 
 O valor mínimo de $E^2$ ocorre no ponto em que a derivada em relação ao vetor de incógnitas $\vec{\beta}$ é igual a zero:
@@ -182,6 +190,164 @@ $$\boxed{\vec{\beta} = (X^T X)^{-1} X^T \vec{y}}$$
 
 Essa abordagem puramente algébrica permite obter a solução de mínimos quadrados para o sistema sobredeterminado diretamente em formato matricial, servindo de base computacional antes de introduzirmos modelos probabilísticos e estatísticos.
 
+<br>
+
+## ***Aplicação, Avaliação e Evolução do Modelo***
+
+Dado o seguinte conjunto de dados, em que $x_1$ e $x_2$ representam as variáveis explicativas e $y$ representa a variável resposta:
+
+<br>
+<div align=center>
+
+**Conjunto de dados (Observações)**
+
+|       | <div align="center" style="width: 150px;">$x1$</div> | <div align="center" style="width: 150px;">$x2$</div> | <div align="center" style="width: 150px;">$y$</div> |
+| :---: | :--------------------------------------------------: | :--------------------------------------------------: | :-------------------------------------------------: |
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;120&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+|   1   |13|90|6.8|
+|   2   |20|120|7.0|
+|   3   |28|60|7.4|
+|   4   |20|150|9.3|
+|   5   |24|150|7.5|
+|   6   |18|60|7.6|
+|   7   |8 |120|8.0|
+|   8   |2 |240|7.0|
+|   9   |12|90|7.3|
+|  10   |15|90|8.6|
+|  11   |9 |120|8.3|
+|  12   |6 |180|7.9|
+|  13   |4 |90|6.4|
+|  14   |8 |150|7.8|
+|  15   |12|120|9.4|
+|  16   |10|180|8.8|
+|  17   |3 |90|6.9|
+|  18   |15|180|7.7|
+|  19   |9 |90|8.2|
+|  20   |24|120|8.6|
+|  21   |5 |150|8.1|
+|  22   |7 |120|7.2|
+|  23   |12|180|8.5|
+|  24   |2 |90|6.1|
+
+</div>
+<br>
+
+Nesse caso, temos 25 observações e duas variáveis explicativas. Portanto, o sistema possui 25 equações, 2 incógnitas ($\beta_1$ e $\beta_2$) e um vetor de constantes $\vec{y}_{25X1}$:
+
+Representação matricial pela Origem (sem intercepto):
+
+$$
+\begin{bmatrix}
+5 & 120\\
+13 & 90\\
+20 & 120\\
+\vdots & \vdots\\
+2 & 90
+\end{bmatrix}
+\begin{bmatrix}
+\beta_1\\
+\beta_2
+\end{bmatrix}
+\approx
+\begin{bmatrix}
+8.1\\
+6.8\\
+7.0\\
+\vdots\\
+6.1
+\end{bmatrix}
+$$
+
+<br>
+
+Ou, de forma explícita:
+
+$$
+\boxed{
+X_{25\times2}\,
+\vec{\beta}_{2\times1}
+\approx
+\vec y_{25\times1}
+}
+$$
+  
+<br>
+
+Em que:
+
+* o produto $X\vec{\beta}$ resulta em um vetor $25\times1$.
+* $X$ é uma matriz $25\times2$;
+* $\vec{\beta}$ é um vetor $2\times1$, contendo as duas incógnitas;
+* $\vec y$ é um vetor $25\times1$, contendo as 25 constantes/valores observados;
+  
+<br>
+
+Como temos mais equações do que incógnitas, não buscamos uma solução exata para cada equação. Utilizamos o **Método dos Mínimos Quadrados** para encontrar os valores de $\beta_1$ e $\beta_2$ que produzem o melhor ajuste aos dados.
+
+Para isso, aplicamos a solução matricial:
+
+$$\boxed{ \vec{\beta}=(X^TX)^{-1}X^T\vec{y} }$$
+  
+<br>
+
+### Transposição da matriz $X$
+
+Primeiramente, calculamos a transposta de $X$, que transforma suas linhas em colunas:
+
+$$X^T= \begin{bmatrix} 
+5 & 13 & 20 & 28 & \cdots & 2\\ 
+120 & 90 & 120 & 60 & \cdots & 90 
+\end{bmatrix}$$
+  
+<br>
+
+### Cálculo de $X^TX$
+
+A multiplicação de $X^T$ por $X$ resulta em uma matriz $2\times2$:
+
+$$
+X^TX=\begin{bmatrix} 
+5 & 13 & 20 & 28 & \cdots & 2\\ 
+120 & 90 & 120 & 60 & \cdots & 90 
+\end{bmatrix}
+\begin{bmatrix}
+5 & 120 \\
+13 & 90\\
+20 & 120\\
+\vdots & \vdots\\
+2 & 90
+\end{bmatrix}
+$$
+
+$$\downarrow$$
+
+$$X^TX= \begin{bmatrix} 
+\sum x_0^2 & \sum x_0x_1\\ 
+\sum x_1x_0 & \sum x_1^2 
+\end{bmatrix}$$ 
+
+$$\downarrow$$
+
+$$
+\boxed{
+\begin{aligned}
+\sum x_0^2
+&=5^2+13^2+20^2+\cdots+2^2\\
+\sum x_0x_1
+&=(5)(120)+(13)(90)+(20)(120)+\cdots+(2)(90)\\
+\sum x_1x_0
+&=(120)(5)+(90)(13)+(120)(20)+\cdots+(90)(2)\\
+\sum x_1^2
+&=120^2+90^2+120^2+\cdots+90^2
+\end{aligned}}
+$$
+
+$$\downarrow$$
+
+$$X^TX= \begin{bmatrix} 
+4669 & 34950\\ 
+34950 & 441900 
+\end{bmatrix}$$
 
 
 
@@ -194,10 +360,7 @@ Essa abordagem puramente algébrica permite obter a solução de mínimos quadra
 
 
 
-
-
-
-
+## ***Bloco de Código***
 
 <details>
   <summary>Python</summary>
