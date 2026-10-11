@@ -192,7 +192,7 @@ Essa abordagem puramente algébrica permite obter a solução de mínimos quadra
 
 <br>
 
-## ***Aplicação, Avaliação e Evolução do Modelo***
+## ***Aplicação Prática***
 
 Dado o seguinte conjunto de dados, em que $x_1$ e $x_2$ representam as variáveis explicativas e $y$ representa a variável resposta:
 
