@@ -1312,7 +1312,7 @@ Onde:
 - $n$: é o tamanho da amostra ($n = 25$).
 - $x_{(i)}$: são os valores da amostra ordenados do menor para o maior ($x_{(1)} \le x_{(2)} \le \dots \le x_{(n)}$).  
 - $\bar{x}$: é a média aritmética simples da amostra.
-- $a_i$: são pesos estatísticos específicos obtidos a partir da covariância e dos valores esperados de estatísticas de ordem de uma normal padrão ($N(0.1)$).  
+- $a_i$: são pesos estatísticos específicos obtidos a partir da covariância e dos valores esperados de estatísticas de ordem de uma normal padrão ( $N(0.1)$ ).  
 
 <br>
 
