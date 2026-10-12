@@ -1361,6 +1361,350 @@ O algoritmo compara o $W$ obtido com a distribuição teórica de $W$ sob a hip�
 
 <br>
 
+## Cálculo dos valores esperados da normal padrão
+
+Inicialmente, são determinados os quantis esperados da distribuição normal padrão. Para isso, define-se o vetor de índices:
+
+$$
+i=\begin{bmatrix}
+1\\
+2\\
+3\\
+\vdots\\
+25
+\end{bmatrix}
+$$
+
+<br>
+
+Os valores esperados são obtidos por meio da transformação:
+
+$$
+m_i=\Phi^{-1} \left( \frac{i−\frac{3}{8}}{n+\frac{1}{4}}\right)
+$$
+
+em que $\Phi^{-1}$ representa a função quantil da inversa da distribuição normal padrão.
+
+Para $n=25$, a expressão assume a forma:
+
+$$
+m_i=\Phi^{-1} \left( \frac{i−0,375}{25,25}\right)
+$$
+$$ \downarrow $$ 
+$$
+\vec{\hat{m_i}}=\begin{bmatrix}
+-1,9642168419486300\\
+-1,5191971786348200\\
+-1,2593033267763100\\
+\vdots\\
+1,9642168419486300
+\end{bmatrix}
+$$
+
+<br>
+
+A aplicação dessa expressão aos 25 índices fornece o vetor de quantis esperados $\hat{\mathbf m}$, cujos valores extremos são aproximadamente $-1,96421684$ e $1,96421684$.
+
+<br>
+
+## Cálculo da soma dos quadrados dos quantis
+
+Na sequência, calcula-se a soma dos quadrados dos valores $m_i$, necessária para a determinação dos coeficientes de Royston:
+
+$$
+\sum^{n}_{i=1} m_i^2
+$$
+
+Em que:
+
+$$
+m_i^2 = m^Tm
+$$
+
+$$\downarrow$$ 
+
+$$
+m^Tm=\begin{bmatrix}
+-1,9642168&
+-1,5191971&
+-1,2593033&
+\dots&
+1,9642168
+\end{bmatrix}
+\begin{bmatrix}
+-1,9642168419486300\\
+-1,5191971786348200\\
+-1,2593033267763100\\
+\vdots\\
+1,9642168419486300
+\end{bmatrix}
+$$
+
+$$ \downarrow $$ 
+
+$$
+m^2=\begin{bmatrix}
+0,4417998157703870\\
+0,3108412242151760\\
+0,2544758389229410\\
+\vdots\\
+-0,4417998157703870
+\end{bmatrix}
+$$
+
+<br>
+
+Para os valores obtidos:
+
+$$
+\sum^{n}_i m_i^2=22,528896471497700
+$$
+
+## Determinação dos coeficientes extremos
+
+O primeiro coeficiente utilizado na aproximação de Royston é obtido a partir do maior quantil esperado:
+
+$$
+C_n=\frac{m_n}{\sqrt{\sum_{i=1}^{n}m_i^2}}.
+$$
+
+<br>
+
+Assim, para $n=25$:
+
+$$
+C_{25}=\frac{1,9642168419486300}{\sqrt{22,528896471497700}}=0,413827617690387
+$$
+
+<br>
+
+Analogamente, para o quantil imediatamente anterior:
+
+$$
+C_{n-1}=\frac{m_{n-1}}{\sqrt{\sum_{i=1}^{n}m_i^2}},
+$$
+
+resultando em:
+
+$$
+C_{24}=\frac{1,5191971786348200}{\sqrt{22,528896471497700}}=0,320069421975176.
+$$
+
+## Cálculo dos coeficientes $a_n$ e $a_{n-1}$
+
+Para a aproximação dos coeficientes de Royston, define-se inicialmente:
+
+$$
+u=\frac{1}{\sqrt n}.
+$$
+
+<br>
+
+Como $n=25$,
+
+$$
+u=\frac{1}{\sqrt{25}}=0,20.
+$$
+
+<br>
+
+O coeficiente associado à maior ordem é calculado por
+
+$$
+\boxed{
+  \begin{aligned}
+    &a_n=C_{n}+0,221157u-0,147981u^2-2,07119u^3+4,434685u^4-2,706056u^5\\
+    &\space\\
+    &\space\\
+    &\space\\
+    &a_{25}=C_{25}+0,221157(0,20)-0,147981(0,20)^2-2,07119(0,20)^3+4,434685(0,20)^4-2,706056(0,20)^5\\
+    &\space\\
+    &\space\\
+    &\space\\
+    &a_{25}=0,413827617690387+0,0442314-0,00591924-0,01656952+0,007095496-0,00086593792
+  \end{aligned}
+}
+$$
+
+$$ \downarrow $$ 
+
+$$
+a_{25}=0,441799815770387
+$$
+
+<br>
+
+Igualmente para $a_{n-1}$, utiliza-se:
+
+$$
+\boxed{
+  \begin{aligned}
+    &a_{n-1}=C_{n-1}+0,042981u-0,293762u^2-1,752461u^3+5,682633u^4-3,582633u^5\\
+    &\space\\
+    &\space\\
+    &\space\\
+    &a_{24}=C_{24}+0,042981(0,20)-0,293762(0,20)^2-1,752461(0,20)^3+5,682633(0,20)^4-3,582633(0,20)^5\\
+    &\space\\
+    &\space\\
+    &\space\\
+    &a_{24}=0,320069421975176+0,0085962-0,01175048-0,014019688+0,0090922128-0,001146442560
+  \end{aligned}
+}
+$$
+
+$$ \downarrow $$ 
+
+$$
+a_{24}=0,310841224215176
+$$
+
+<br>
+
+## Determinação de $\eta$
+
+Com os valores de $a_{25}$ e $a_{24}$, determina-se o fator de normalização $\eta$ por:
+
+$$
+\boxed{
+  \begin{aligned}
+    &η = \frac{ \sum^{n}_{i=1} m_i^2 - 2m_{n}^2 - 2m_{n-1}^2}{1-2a_{n}^2-2a_{n-1}^2}\\
+    &\space\\
+    &\space\\
+    &\space\\
+    &η = \frac{22,5288964714977 - 2 \times 1,96421684194863^2 - 2 \times 1,51919717863482^2}{1-2\times0,441799815770387^2-2\times0,310841224215176^2}\\
+    &\space\\
+    &\space\\
+    &\space\\
+    &η = \frac{22,5288964714977 - 7,716295604 - 4,615920135}{1-0,390374154-0,193244533}\\
+    &\space\\
+    &\space\\
+    &\space\\
+    &η = \frac{10,1966807319644}{0,416381312}
+  \end{aligned}
+}
+$$
+
+$$ \downarrow $$ 
+
+$$
+η = 24,4888049307975
+$$
+
+<br>
+
+Os coeficientes são determinados por:
+
+$$
+\vec{\hat{a}}=a_{i=13}^{23} \cup a_{i=24}^{25}
+$$
+
+<br>
+
+Sendo o vetor intermediário:
+
+$$
+a_{i=13}^{23}=\frac{m_{i}}{\sqrt{η}}
+$$
+
+$$\downarrow$$ 
+
+$$
+a_{i=13}^{23} =\frac{m_i}{\sqrt{24,4888049307975}}
+$$
+
+$$\downarrow$$ 
+
+$$
+a_{i=13}^{23}=\begin{bmatrix}
+0,0000000000000000\\
+0,0200937024567133\\
+0,0403885744211470\\
+0,0611002786348897\\
+0,0824762869770886\\
+0,1048199468783080\\
+0,1285281947032720\\
+0,1541570107663560\\
+0,1825473174182830\\
+0,2150988204776230\\
+0,2544758389229410
+\end{bmatrix}
+$$
+
+<br>
+
+Que deve ser complementado pelos coeficientes extremos $a_{24}$ e $a_{25}$. 
+
+Considerando a ordenação necessária para a aplicação do teste, obtém-se o vetor de coeficientes de Royston:
+
+$$
+\vec{\hat{a}}=a_{i=13}^{23} \cup a_{i=24}^{25}
+$$
+
+$$\downarrow$$ 
+
+$$
+\vec{\hat{a}}=\begin{bmatrix}
+0,0000000000000000\\
+0,0200937024567133\\
+0,0403885744211470\\
+0,0611002786348897\\
+0,0824762869770886\\
+0,1048199468783080\\
+0,1285281947032720\\
+0,1541570107663560\\
+0,1825473174182830\\
+0,2150988204776230\\
+0,2544758389229410
+\end{bmatrix}
+\cup  
+\begin{bmatrix}
+0,310841224215176\\
+0,441799815770387
+\end{bmatrix}
+$$
+
+$$\downarrow$$ 
+
+$$
+\vec{\hat{a}}=\begin{bmatrix}
+0,0000000000000000\\
+0,0200937024567133\\
+0,0403885744211470\\
+0,0611002786348897\\
+0,0824762869770886\\
+0,1048199468783080\\
+0,1285281947032720\\
+0,1541570107663560\\
+0,1825473174182830\\
+0,2150988204776230\\
+0,2544758389229410\\
+0,310841224215176\\
+0,441799815770387
+\end{bmatrix}
+$$
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
