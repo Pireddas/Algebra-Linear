@@ -1202,7 +1202,164 @@ Esse procedimento mostra como a solução matricial transforma o conjunto de dad
 
 <br>
 
+---
+---
 
+## Resultado  
+
+<div align=center>
+   
+|       | <div align="center" style="width: 60px;">$x0$</div> | <div align="center" style="width: 60px;">$x1$</div> | <div align="center" style="width: 60px;">$x2$</div> | <div align="center" style="width: 60px;">$y$</div> | <div align="center" style="width: 85px;">Previsão ($\hat y$)</div> | <div align="center" style="width: 130px;">Resíduo ($y - \hat y$)</div> | <div align="center" style="width: 95px;">Erro Absoluto</div> |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;120&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.466909&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.633090679&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.633091&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+|   1   | 1 |13|90|6.8|7.604271|-0.80427097|0.804271|
+|   2   | 1 |20|120|7.0|8.086866|-1.086866254|1.086866|
+|   3   | 1 |28|60|7.4|8.030946|-0.630945854|0.630946|
+|   4   | 1 |20|150|9.3|8.280148|1.019851697|1.019852|
+|   5   | 1 |24|150|7.5|8.445470|-0.945470151|0.945470|
+|   6   | 1 |18|60|7.6|7.617641|-0.017641232|0.017641|
+|   7   | 1 |8 |120|8.0|7.590901|0.409099292|0.409099|
+|   8   | 1 |2 |240|7.0|8.116046|-1.11604613|1.116046|
+|   9   | 1 |12|90|7.3|7.562941|-0.262940508|0.262941|
+|  10   | 1 |15|90|8.6|7.686932|0.913068106|0.913068|
+|  11   | 1 |9 |120|8.3|7.632231|0.66776883|0.667769|
+|  12   | 1 |6 |180|7.9|7.894804|0.005196119|0.005196|
+|  13   | 1 |4 |90|6.4|7.232297|-0.832296811|0.832297|
+|  14   | 1 |8 |150|7.8|7.784183|0.015817243|0.015817|
+|  15   | 1 |12|120|9.4|7.756223|1.643777443|1.643777|
+|  16   | 1 |10|180|8.8|8.060126|0.73987427|0.739874|
+|  17   | 1 |3 |90|6.9|7.190966|-0.290966348|0.290966|
+|  18   | 1 |15|180|7.7|8.266778|-0.566778041|0.566778|
+|  19   | 1 |9 |90|8.2|7.438949|0.761050879|0.761051|
+|  20   | 1 |24|120|8.6|8.252188|0.347811897|0.347812|
+|  21   | 1 |5 |150|8.1|7.660191|0.43980863|0.439809|
+|  22   | 1 |7 |120|7.2|7.549570|-0.349570246|0.349570|
+|  23   | 1 |12|180|8.5|8.142787|0.357213346|0.357213|
+|  24   | 1 |2 |90|6.1|7.149636|-1.049635886|1.049636|
+
+<br>
+
+Erro médio absoluto (MAE): **0.6362742745**
+</div>
+<br>
+
+## Representação Gráfica
+
+<br>
+
+<img width="450" height="300" alt="image" src="https://github.com/user-attachments/assets/cacbac06-af09-4fc5-834c-63ada0889c3b" />
+<img width="450" height="300" alt="image" src="https://github.com/user-attachments/assets/ba039795-0c17-4671-9dda-f47faa4e8675" />
+
+*Photo by [Ralf Piredda]()*
+
+<br>
+
+## Conclusão
+
+Diferente do modelo que passa pela origem, a inclusão do intercepto ($\beta_0$) na equação estimada
+
+$$\boxed{ \hat y_i = 6.4871 + 0.04133x_{i1} + 0.006442x_{i2} }$$
+
+fornece flexibilidade para modelar fenômenos do mundo real.
+
+O impacto dessa flexibilidade reflete-se diretamente na acurácia preditiva. Enquanto o modelo sem intercepto apresentou um Erro Médio Absoluto (MAE) elevado de 1.5823, a inclusão do intercepto reduziu esse erro para 0.6363. A dedução matricial de $\vec{\hat{\beta}} = (X^TX)^{-1}X^Ty$ com a inclusão da coluna de 1s na matriz de projeto $X$ garante que os resíduos (erros) tenham média zero e distribui de forma equilibrada as flutuações ao redor da reta de regressão, conferindo confiabilidade para a tomada de decisões.
+
+Mesmo que o resultado tenha apresentado uma melhora com a inclusão do intercepto, podemos afirmar que a regressão linear foi o método mais adequado?  
+
+Para respondermos a essa questão, antes precisaremos passar por alguns conceitos importantes para o estudo de regressões:  
+
+- Testes de Normalidade
+  - Teste Shapiro-Wilk
+  - Teste Lilliefors (Kolmogorov-Smirnov)
+- Coeficientes de Correlação
+  - Pearson (linear / dados normais)
+  - Spearman (postos / não normal)
+  - Kendall (postos / não normal e amostras menores)
+- Coeficiente de Determinação ($R^2$)
+
+<br>
+
+## Testes de Normalidade
+
+Teste de normalidade é um procedimento estatístico usado para verificar se um conjunto de dados segue uma distribuição normal (curva em forma de sino).
+
+<img width="450" height="300" alt="image" src="https://github.com/user-attachments/assets/b529aa1a-beeb-41f0-bb43-47f7bd027d88" />
+
+*Photo by [andre.zibetti](https://www.inf.ufsc.br/~andre.zibetti/probabilidade/normal.html)*
+
+<br>
+
+Objetivo: Avaliar se a variável em estudo se comporta de forma paramétrica (normal).  
+
+**Hipóteses:** 
+- Hipótese nula (H₀):  
+  Os dados seguem uma distribuição normal.
+
+- Hipótese alternativa (H₁):  
+  Os dados não seguem uma distribuição normal.
+
+<br>
+
+## Shapiro-Wilk  
+
+O teste de Shapiro-Wilk é um métodos para testar a normalidade de um conjunto de dados com até 5 mil observações.
+
+A Fórmula do Teste ($W$)  A estatística do teste, denotada por $W$, é calculada pela seguinte razão:  
+
+$$W = \frac{\left( \sum_{i=1}^{n} a_i x_{(i)} \right)^2}{\sum_{i=1}^{n} (x_i - \bar{x})^2}$$
+
+Onde:  
+- $n$: é o tamanho da amostra (no seu dataset, $n = 25$).
+- $x_{(i)}$: são os valores da amostra ordenados do menor para o maior ($x_{(1)} \le x_{(2)} \le \dots \le x_{(n)}$).  
+- $\bar{x}$: é a média aritmética simples da amostra.
+- $a_i$: são pesos estatísticos específicos obtidos a partir da covariância e dos valores esperados de estatísticas de ordem de uma normal padrão ($N(0.1)$).  
+
+<br>
+
+## Passo a Passo
+
+Para calcular o $W$ à mão (ou entender o que o computador faz quando chamamos stats.shapiro), seguimos estas etapas:  
+
+**Passo 1:** Organização e Ordenação dos Dados  
+
+Pegamos os dados brutos da coluna (ex: RM ou MEDV) e os ordenamos em ordem crescente:
+
+$$x_{(1)}, x_{(2)}, x_{(3)}, \dots, x_{(n)}$$
+
+**Passo 2:** Cálculo do Denominador (Variabilidade Total)  
+
+Calculamos a soma dos desvios quadráticos em relação à média (exatamente igual ao denominador da variância amostral):
+
+$$\text{Denominador} = \sum_{i=1}^{n} (x_i - \bar{x})^2$$
+
+**Passo 3:** Obtenção dos Coeficientes de Peso ($a_i$)  
+
+Os coeficientes $a_i$ são simétricos (o peso do primeiro elemento espelha o do último, com sinal trocado). Eles vêm de tabelas polinomiais criadas por Shapiro e Wilk (ou calculadas via algoritmos complexos como a aproximação de Royston para $n$ grandes).
+
+- Eles dão mais peso aos valores extremos (caudas da distribuição), pois é exatamente nas pontas que os dados não-normais costumam "fugir" da curva em sino.
+  
+**Passo 4:** Cálculo do Numerador (Soma Ponderada)  
+
+Multiplicamos cada valor ordenado $x_{(i)}$ pelo seu respectivo peso $a_i$, somamos e elevamos o resultado ao quadrado:
+
+$$\text{Numerador} = \left( \sum_{i=1}^{n} a_i x_{(i)} \right)^2$$
+
+**Passo 5:** Obtenção do Estatístico $W$ e InterpretaçãoDividimos o numerador pelo denominador:
+
+$$W = \frac{\text{Numerador}}{\text{Denominador}}$$
+
+O que o valor de $W$ significa?  
+- O coeficiente $W$ varia sempre entre 0 e 1.  
+- Se $W$ for muito próximo de 1, significa que a distribuição dos seus dados se alinha à de uma curva normal.  
+- Se $W$ for muito menor que 1 (próximo de 0), os dados apresentam forte assimetria ou desvio da normalidade.  
+
+**Passo 6:** O Cálculo do P-valor ($p$-value)  
+
+O algoritmo compara o $W$ obtido com a distribuição teórica de $W$ sob a hipótese nula para gerar o $p$-valor.  
+- Se $p > 0.05$: Falhamos em rejeitar $H_0$. Consideramos que os dados seguem uma distribuição normal.  
+- Se $p \le 0.05$: Rejeitamos $H_0$. Os dados não seguem uma distribuição normal.  
+
+<br>
 
 
 
