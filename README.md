@@ -294,7 +294,7 @@ $$\boxed{ \vec{\beta}=(X^TX)^{-1}X^T\vec{y} }$$
   
 <br>
 
-### Transposição da matriz $X$
+## ***Transposição da matriz*** $X$
 
 Primeiramente, calculamos a transposta de $X$, que transforma suas linhas em colunas:
 
@@ -305,7 +305,7 @@ $$X^T= \begin{bmatrix}
   
 <br>
 
-### Cálculo de $X^TX$
+## ***Cálculo de*** $X^TX$
 
 A multiplicação de $X^T$ por $X$ resulta em uma matriz $2\times2$:
 
@@ -355,7 +355,7 @@ $$X^TX= \begin{bmatrix}
 
 <br>
 
-## Cálculo de $X^T\vec{y}$
+## ***Cálculo de*** $X^T\vec{y}$
 
 De forma semelhante, calculamos o produto entre $X^T$ e o vetor de valores observados $\vec{y}$:
 
@@ -420,7 +420,7 @@ $$\vec{\beta}=\begin{bmatrix}
   
 <br>
 
-## Cálculo da matriz inversa $(X^TX)^{-1}$
+## ***Cálculo da matriz inversa*** $(X^TX)^{-1}$
 
 Para uma matriz $2\times2$ da forma
 
@@ -484,7 +484,7 @@ $$
 
 <br>
 
-## Obtenção de $\beta_1$ e $\beta_2$
+## ***Obtenção de*** $\beta_1$ ***e*** $\beta_2$
 
 Finalmente, realizamos a multiplicação de $(X^TX)^{-1}$ por $X^T\vec{y}$:
 
@@ -542,7 +542,7 @@ Esse procedimento mostra como a solução matricial transforma o conjunto de dad
 
 <br>
 
-## Resultado  
+## ***Resultado***  
 
 <div align=center>
 
@@ -584,7 +584,7 @@ Erro médio absoluto (MAE): **1.58236029**
 
 <div>
 
-### Representação Gráfica 
+### ***Representação Gráfica*** 
 
 <div style="display: flex; gap: 10px;">
 
@@ -597,7 +597,7 @@ Erro médio absoluto (MAE): **1.58236029**
 
 <br>
 
-### Conclusão
+## ***Conclusão***
 
 Embora tenhamos obtido uma solução matemática para o sistema, o modelo $\hat{y} = 0.1839x_0 + 0.0414x_1$ apresenta uma limitação.
 
@@ -647,7 +647,7 @@ $$\boxed{y=\underbrace{\beta_0 x_0+\beta_1 x_1+\beta_2 x_2}_{\text{Componente De
 
 <br>
 
-## Regressão Linear Múltipla com Intercepto ($\beta_0$) 
+## ***Regressão Linear Múltipla com Intercepto*** ($\beta_0$) 
 
 Dado o seguinte conjunto de dados, em que adicionamos a coluna de uns $x_0$ para cálculo do intercepto:
 
@@ -741,7 +741,7 @@ $$\boxed{\vec{\beta}=(X^TX)^{-1}X^T\vec{y}}$$
 
 <br>
 
-## Transposição da matriz $X$
+## ***Transposição da matriz*** $X$
 
 Primeiramente, calculamos a transposta de $X$, que transforma suas linhas em colunas:
 
@@ -753,7 +753,7 @@ $$X^T= \begin{bmatrix}
 
 <br>
 
-## Cálculo de $X^TX$
+## ***Cálculo de*** $X^TX$
 
 A multiplicação de $X^T$ por $X$ resulta em uma matriz quadrada $3\times3$:
 
@@ -814,7 +814,7 @@ $$X^TX= \begin{bmatrix}
 
 <br>
 
-## Cálculo de $X^T\vec{y}$
+## ***Cálculo de*** $X^T\vec{y}$
 
 De forma semelhante, calculamos o produto entre $X^T$ e o vetor de valores observados $\vec{y}$:
 
@@ -881,7 +881,7 @@ $$\vec{\hat{\beta}}=\begin{bmatrix}
 
 <br>
 
-## Cálculo da Matriz Inversa $(X^TX)^{-1}$
+## ***Cálculo da Matriz Inversa*** $(X^TX)^{-1}$
 
 Para inverter uma matriz $3\times3$ de forma: 
 
@@ -1202,10 +1202,7 @@ Esse procedimento mostra como a solução matricial transforma o conjunto de dad
 
 <br>
 
----
----
-
-## Resultado  
+## ***Resultado***  
 
 <div align=center>
    
@@ -1243,7 +1240,7 @@ Erro médio absoluto (MAE): **0.6362742745**
 </div>
 <br>
 
-## Representação Gráfica
+## ***Representação Gráfica***
 
 <br>
 
@@ -1254,7 +1251,7 @@ Erro médio absoluto (MAE): **0.6362742745**
 
 <br>
 
-## Conclusão
+## ***Conclusão***
 
 Diferente do modelo que passa pela origem, a inclusão do intercepto ($\beta_0$) na equação estimada
 
@@ -1283,7 +1280,7 @@ Para respondermos a essa questão, antes precisaremos passar por alguns conceito
 
 <br>
 
-## Testes de Normalidade
+## ***Testes de Normalidade***
 
 Teste de normalidade é um procedimento estatístico usado para verificar se um conjunto de dados segue uma distribuição normal (curva em forma de sino).
 
@@ -1304,9 +1301,9 @@ Objetivo: Avaliar se a variável em estudo se comporta de forma paramétrica (no
 
 <br>
 
-## Shapiro-Wilk  
+## ***Shapiro-Wilk***  
 
-O teste de Shapiro-Wilk é um métodos para testar a normalidade de um conjunto de dados com até 5 mil observações.
+O teste de Shapiro-Wilk é um método para testar a normalidade de um conjunto de dados com até 5 mil observações.
 
 A Fórmula do Teste ($W$)  A estatística do teste, denotada por $W$, é calculada pela seguinte razão:  
 
@@ -1320,7 +1317,7 @@ Onde:
 
 <br>
 
-## Passo a Passo
+## ***Passo a Passo***
 
 Para calcular o $W$ à mão (ou entender o que o computador faz quando chamamos stats.shapiro), seguimos estas etapas:  
 
@@ -1365,7 +1362,7 @@ O algoritmo compara o $W$ obtido com a distribuição teórica de $W$ sob a hip�
 
 <br>
 
-## Cálculo dos valores esperados da normal padrão
+## ***Cálculo dos valores esperados da normal padrão***
 
 Inicialmente, são determinados os quantis esperados da distribuição normal padrão. Para isso, define-se o vetor de índices:
 
@@ -1411,7 +1408,7 @@ A aplicação dessa expressão aos 25 índices fornece o vetor de quantis espera
 
 <br>
 
-## Cálculo da soma dos quadrados dos quantis
+## ***Cálculo da soma dos quadrados dos quantis***
 
 Na sequência, calcula-se a soma dos quadrados dos valores $m_i$, necessária para a determinação dos coeficientes de Royston:
 
@@ -1464,7 +1461,9 @@ $$
 \sum^{n}_i m_i^2=22,528896471497700
 $$
 
-## Determinação dos coeficientes extremos
+<br>
+
+## ***Determinação dos coeficientes extremos***
 
 O primeiro coeficiente utilizado na aproximação de Royston é obtido a partir do maior quantil esperado:
 
@@ -1494,7 +1493,9 @@ $$
 C_{24}=\frac{1,5191971786348200}{\sqrt{22,528896471497700}}=0,320069421975176.
 $$
 
-## Cálculo dos coeficientes $a_n$ e $a_{n-1}$
+<br>
+
+## ***Cálculo dos coeficientes*** $a_n$ ***e*** $a_{n-1}$
 
 Para a aproximação dos coeficientes de Royston, define-se inicialmente:
 
@@ -1564,7 +1565,7 @@ $$
 
 <br>
 
-## Determinação de $\eta$
+## ***Determinação de*** $\eta$
 
 Com os valores de $a_{25}$ e $a_{24}$, determina-se o fator de normalização $\eta$ por:
 
