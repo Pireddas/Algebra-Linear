@@ -1278,6 +1278,7 @@ Para respondermos a essa questão, antes precisaremos passar por alguns conceito
   - Pearson (linear / dados normais)
   - Spearman (postos / não normal)
   - Kendall (postos / não normal e amostras menores)
+- Estatística de teste t
 - Coeficiente de Determinação ($R^2$)
 
 <br>
