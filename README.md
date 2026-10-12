@@ -1309,7 +1309,7 @@ A Fórmula do Teste ($W$)  A estatística do teste, denotada por $W$, é calcula
 $$W = \frac{\left( \sum_{i=1}^{n} a_i x_{(i)} \right)^2}{\sum_{i=1}^{n} (x_i - \bar{x})^2}$$
 
 Onde:  
-- $n$: é o tamanho da amostra (no seu dataset, $n = 25$).
+- $n$: é o tamanho da amostra ($n = 25$).
 - $x_{(i)}$: são os valores da amostra ordenados do menor para o maior ($x_{(1)} \le x_{(2)} \le \dots \le x_{(n)}$).  
 - $\bar{x}$: é a média aritmética simples da amostra.
 - $a_i$: são pesos estatísticos específicos obtidos a partir da covariância e dos valores esperados de estatísticas de ordem de uma normal padrão ($N(0.1)$).  
