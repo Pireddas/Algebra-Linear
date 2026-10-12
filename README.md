@@ -879,6 +879,328 @@ $$\vec{\hat{\beta}}=\begin{bmatrix}
 24726 
 \end{bmatrix}$$
 
+<br>
+
+## Cálculo da Matriz Inversa $(X^TX)^{-1}$
+
+Para inverter uma matriz $3\times3$ de forma: 
+
+$$
+A=\begin{bmatrix}
+a & b & c\\
+d & e & f\\
+g & h & i
+\end{bmatrix},
+$$
+
+utilizamos a fórmula:
+
+$$A^{-1}=\frac{1}{\det(A)} \text{adj}(A)$$
+
+com o padrão de sinais dos cofatores dado por:
+
+$$
+\begin{pmatrix} 
+\text{+} & \text{-} & \text{+} \\
+\text{-} & \text{+} & \text{-} \\
+\text{+} & \text{-} & \text{+} 
+\end{pmatrix}
+$$
+
+<br>
+
+Identificando os elementos de $X^TX$:
+* $a = 25, \quad b = 291, \quad c = 3150$
+* $d = 291, \quad e = 4669, \quad f = 34950$
+* $g = 3150, \quad h = 34950, \quad i = 441900$
+
+<br>
+
+Matriz de Cofatores ($C_{ij}$) e Matriz Adjunta $\text{adj}(X^TX)$:
+
+Em que:
+
+$$
+X^T X=\begin{bmatrix} 
+25 & 291 & 3150\\ 
+291 & 4669 & 34950\\ 
+3150 & 34950 & 441900  
+\end{bmatrix}
+\longrightarrow\ 
+\begin{pmatrix} 
+\text{+} & \text{-} & \text{+} \\
+\text{-} & \text{+} & \text{-} \\
+\text{+} & \text{-} & \text{+}
+\end{pmatrix}
+$$
+
+Para acharmos a primeira linha ($C_{00}$, $C_{01}$ e $C_{02}$) da Matriz de Cofatores ($C_{ij}$), eliminamos a 1ª coluna de $X^T X$ e as linhas conforme abaixo:
+
+<br>
+
+Eliminamos a 1ª linha de $X^T X$  
+
+$$\begin{bmatrix} 
+\emptyset & \emptyset & \emptyset \\
+\emptyset & 4669 & 34950\\
+\emptyset & 34950 & 441900  
+\end{bmatrix}$$
+$$\downarrow$$
+$$\boxed{C_{00}: + (4669 \cdot 441900 - 34950 \cdot 34950) = 2063231.100 - 1221502500 = 841728600}$$
+
+<br>
+
+Eliminamos a 2ª linha de $X^T X$  
+
+$$\begin{bmatrix} 
+\emptyset & 291 & 3150 \\
+\emptyset & \emptyset & \emptyset\\
+\emptyset & 34950 & 441900  
+\end{bmatrix}$$
+$$\downarrow$$
+$$\boxed{C_{01}: - (291 \cdot 441900 - 34950 \cdot 3150) = - (128592900 - 110092500) = -18500400}$$
+
+<br>
+
+Eliminamos a 3ª linha de $X^T X$   
+
+$$\begin{bmatrix} 
+\emptyset & 291 & 3150 \\
+\emptyset & 4669 & 34950\\
+\emptyset & \emptyset & \emptyset  
+\end{bmatrix}$$
+$$\downarrow$$
+$$\boxed{C_{02}: + (291 \cdot 34950 - 4669 \cdot 3150) = 10170450 - 14707350 = -4536900}$$
+
+<br>
+
+Em seguida, para acharmos a segunda linha ($C_{10}$, $C_{11}$ e $C_{12}$) da Matriz de Cofatores ($C_{ij}$), eliminamos a 2ª coluna de $X^T X$ e as linhas conforme abaixo:
+
+<br>
+
+Eliminamos a 1ª linha de $X^T X$  
+
+$$\begin{bmatrix} 
+\emptyset & \emptyset & \emptyset\\ 
+291 & \emptyset & 34950\\ 
+3150 & \emptyset & 441900   
+\end{bmatrix}$$
+$$\downarrow$$
+$$\boxed{C_{10}: - (291 \cdot 441900 - 3150 \cdot 34950) = 128592900 - 110092500 = -18500400}$$  
+
+<br>
+
+Eliminamos a 2ª linha de $X^T X$ 
+
+$$\begin{bmatrix} 
+25 & \emptyset & 3150\\ 
+\emptyset & \emptyset & \emptyset\\ 
+3150 & \emptyset & 441900  
+\end{bmatrix}$$
+$$\downarrow$$
+$$\boxed{C_{11}: + (25 \cdot 441900 - 3150 \cdot 3150) = 11047500 - 9922500 = 1125000}$$  
+
+<br>
+
+Eliminamos a 3ª linha de $X^T X$  
+
+$$\begin{bmatrix} 
+25 & \emptyset & 3150\\ 
+291 & \emptyset & 34950\\ 
+\emptyset & \emptyset & \emptyset  
+\end{bmatrix}$$
+$$\downarrow$$
+$$\boxed{C_{12}: - (25 \cdot 34950 - 291 \cdot 3150) = - (873750 - 916650) = 42900}$$
+
+<br>
+
+Finalmente, para acharmos a terceira linha ($C_{20}$, $C_{21}$ e $C_{22}$) da Matriz de Cofatores ($C_{ij}$), eliminamos 3ª coluna de $X^T X$ e as linhas conforme abaixo:
+
+<br>
+
+Eliminamos 1ª linha de $X^T X$  
+
+$$\begin{bmatrix} 
+\emptyset & \emptyset & \emptyset\\ 
+291 & 4669 & \emptyset\\ 
+3150 & 34950 & \emptyset   
+\end{bmatrix}$$
+$$\downarrow$$
+$$\boxed{C_{20}: + (291 \cdot 34950 - 3150 \cdot 4669) = 10170450 - 14707350 = -4536900}$$
+
+<br>
+
+Eliminamos 2ª linha de $X^T X$  
+
+$$\begin{bmatrix} 
+25 & 291 & \emptyset\\ 
+\emptyset & \emptyset & \emptyset\\ 
+3150 & 34950 & \emptyset  
+\end{bmatrix}$$
+
+$$\boxed{C_{21}: - (25 \cdot 34950 - 3150 \cdot 291) = - (873750 - 916650) = 42900}$$
+
+<br>
+
+Eliminamos 3ª linha de $X^T X$  
+
+$$
+\begin{bmatrix}
+25 & 291 & \emptyset \\
+291 & 4669 & \emptyset \\
+\emptyset & \emptyset & \emptyset
+\end{bmatrix}
+$$
+$$\downarrow$$
+$$\boxed{C_{22}: + (25 \cdot 4669 - 291 \cdot 291) = 116725 - 84681 = 32044}$$
+
+<br>
+
+Sendo $X^TX$ uma matriz simétrica, a Matriz de Cofatores é igual à sua transposta ($C = C^T$), logo:
+
+$$\text{adj}(X^TX)=\begin{bmatrix} 
+841728600 & -18500400 & -4536900 \\ 
+-18500400 & 1125000 & 42900 \\ 
+-4536900 & 42900 & 32044 
+\end{bmatrix}$$
+
+Cálculo do Determinante $\det(X^TX)$:
+
+Sendo:
+
+$$X^T X=\begin{bmatrix} 
+25 & 291 & 3150\\ 
+291 & 4669 & 34950\\ 
+3150 & 34950 & 441900  
+\end{bmatrix}
+\longrightarrow
+\begin{bmatrix}
+a & b & c\\
+d & e & f\\
+g & h & i
+\end{bmatrix}$$
+
+Pela Regra de Sarrus:
+
+$$det(X^T X)=(aei+bfg+cdh)−(ceg+bdi+afh)$$
+
+<br>
+
+Então:
+
+$$
+\boxed{
+\begin{aligned}
+&v_1 = aei+bfg+cdh\\
+&aei = (25 \times 4669 \times 441900)=51580777500\\
+&bfg = (291 \times 34950 \times 3150)=32036917500\\
+&cdh = (3150 \times 291 \times 34950)=32036917500\\
+&v_1 = 115654612500
+\end{aligned}}
+$$
+
+$$
+\boxed{
+\begin{aligned}
+&v_2 = ceg+bdi+afh\\
+&ceg = (3150 \times 4669 \times 3150)=46328152500\\
+&bdi = (291 \times 291 \times 441900)=37420533900\\
+&afh = (25\times 34950 \times 34950)=30537562500\\
+&v_2 = 114286248900
+\end{aligned}}
+$$
+
+$$
+\boxed{
+\begin{aligned}
+det(X^T X) &= v_1-v_2\\
+det(X^T X) &= 115654612500-114286248900\\
+det(X^T X) &= 1368363600
+\end{aligned}}
+$$
+
+Obtenção da Inversa $(X^TX)^{-1}$:
+
+$$
+(X^TX)^{-1}=\frac{1}{\det(X^TX)}
+\text{adj}(X^TX)
+$$
+$$\downarrow$$
+$$
+(X^TX)^{-1}=\frac{1}{1368363600}
+\begin{bmatrix}
+841728600 & -18500400 & -4536900 \\ 
+-18500400 & 1125000 & 42900 \\ 
+-4536900 & 42900 & 32044
+\end{bmatrix}
+$$
+$$\downarrow$$
+$$
+(X^TX)^{-1}\approx\begin{bmatrix}
+ 0.615135188 &	-0.013520091 &	-0.003315566 \\
+-0.013520091 &	 0.000822150 &	 0.000031351 \\
+-0.003315566 &	 0.000031351 &	 0.000023418 
+\end{bmatrix}
+$$
+
+<br>
+
+Obtenção de $\beta_0$, $\beta_1$ e $\beta_2$
+
+Finalmente, realizando a multiplicação matricial $(X^TX)^{-1} \cdot (X^T\vec{y})$:
+
+$$
+\vec{\hat{\beta}}=\begin{bmatrix}
+ 0.615135188 &	-0.013520091 &	-0.003315566 \\
+-0.013520091 &	 0.000822150 &	 0.000031351 \\
+-0.003315566 &	 0.000031351 &	 0.000023418 
+\end{bmatrix}
+\begin{bmatrix}
+194.5\\
+2305.9\\ 
+24726 
+\end{bmatrix}
+$$
+
+$$\downarrow$$
+
+$$
+\vec{\beta}\approx\begin{bmatrix}
+ 6.48712881576214 \\
+ 0.04133046216663 \\
+ 0.00644273495729 
+\end{bmatrix}
+$$
+  
+<br>
+
+Portanto, os coeficientes estimados pelo Método dos Mínimos Quadrados são:
+
+$$\boxed{\beta_0\approx 6.48712881576214}$$
+$$\boxed{\beta_1\approx 0.04133046216663}$$
+$$\boxed{\beta_2\approx 0.00644273495729}$$
+  
+<br>
+
+Assim, para a Matriz de Observações $X$, a equação estimada pelo modelo é:
+
+$$
+X=\begin{bmatrix}
+1 & 5 & 120\\
+1 & 13 & 90\\
+1 & 20 & 120\\
+\vdots & \vdots & \vdots\\
+1 & 2 & 90
+\end{bmatrix}
+$$
+
+$$\boxed{ \hat y_i=6.4871x_{i0} + 0.04133x_{i1}+0.006442x_{i2} }$$
+
+<br>
+
+Esse procedimento mostra como a solução matricial transforma o conjunto de dados em dois coeficientes que definem o modelo de regressão.
+
+<br>
 
 
 
