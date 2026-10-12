@@ -1271,6 +1271,9 @@ Para respondermos a essa questão, antes precisaremos passar por alguns conceito
 - Testes de Normalidade
   - Teste Shapiro-Wilk
   - Teste Lilliefors (Kolmogorov-Smirnov)
+- Homocedasticidade
+  - Teste de Breusch-Pagan
+- Outliers nos Resíduos
 - Coeficientes de Correlação
   - Pearson (linear / dados normais)
   - Spearman (postos / não normal)
