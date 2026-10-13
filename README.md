@@ -2116,13 +2116,13 @@ $$p-valor = 0.364493979877$$
 
 ### ***Interpretação***
 
-Como o p-valor obtido ($0.36449$) é superior a $0.05$, não há evidência estatística suficiente para rejeitar a hipótese nula ($H_0$), confirmando que os dados seguem uma distribuição normal.
+Como o p-valor obtido ($0.36449$) é superior a $0.05$, não há evidência estatística suficiente para rejeitar a hipótese nula ($H_0$). Assim, os dados são compatíveis com uma distribuição normal.
 
 ![alt text](image-11.png)
 
 </div>
 
-
+não há evidência estatística suficiente para rejeitar a hipótese nula de normalidade dos dados.
 
 
 
