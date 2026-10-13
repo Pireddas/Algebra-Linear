@@ -1691,7 +1691,436 @@ $$
 <br>
 
 
+---
+---
 
+<br>
+
+Dado os seguintes conjuntos de dados:
+
+<br>
+<div align=center>
+
+**Conjunto de dados (Observações)**
+
+|       | <div align="center" style="width: 80px;">$y$</div> | <div align="center" style="width: 80px;">Previsão ($\hat y$)</div> | <div align="center" style="width: 200px;">Resíduos ($y - \hat y$)</div> |
+| :---: | :---: | :---: | :---: |
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.466909&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.633090679&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+|   1   |6.8|7.604271|-0.80427097|
+|   2   |7.0|8.086866|-1.086866254|
+|   3   |7.4|8.030946|-0.630945854|
+|   4   |9.3|8.280148|1.019851697|
+|   5   |7.5|8.445470|-0.945470151|
+|   6   |7.6|7.617641|-0.017641232|
+|   7   |8.0|7.590901|0.409099292|
+|   8   |7.0|8.116046|-1.11604613|
+|   9   |7.3|7.562941|-0.262940508|
+|  10   |8.6|7.686932|0.913068106|
+|  11   |8.3|7.632231|0.66776883|
+|  12   |7.9|7.894804|0.005196119|
+|  13   |6.4|7.232297|-0.832296811|
+|  14   |7.8|7.784183|0.015817243|
+|  15   |9.4|7.756223|1.643777443|
+|  16   |8.8|8.060126|0.73987427|
+|  17   |6.9|7.190966|-0.290966348|
+|  18   |7.7|8.266778|-0.566778041|
+|  19   |8.2|7.438949|0.761050879|
+|  20   |8.6|8.252188|0.347811897|
+|  21   |8.1|7.660191|0.43980863|
+|  22   |7.2|7.549570|-0.349570246|
+|  23   |8.5|8.142787|0.357213346|
+|  24   |6.1|7.149636|-1.049635886|
+
+<br>
+
+**Coeficientes Shapiro-Wilk (Royston)**
+
+|<div align="center" style="width: 100px;">$i$</div> | <div align="center" style="width: 100px;">$a$</div> |
+| :---: | :---: |
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.441802&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+|2|0.310852  |
+|3|0.254467  |
+|4|0.215099  |
+|5|0.182557  |
+|6|0.154166  |
+|7|0.128524  |
+|8|0.104834  |
+|9|0.082465  |
+|10|0.061101 |
+|11|0.040399 |
+|12|0.020105 |
+|13|0.000000 |
+|14|-0.020105 |
+|15|-0.040399 |
+|16|-0.061101 |
+|17|-0.082465 |
+|18|-0.104834 |
+|19|-0.128524 |
+|20|-0.154166 |
+|21|-0.182557 |
+|22|-0.215099 |
+|23|-0.254467 |
+|24|-0.310852 |
+|25|-0.441802 |
+
+</div>
+<br>
+
+Considerando os valores observados, as previsões obtidas pelo modelo e os respectivos resíduos apresentados anteriormente, procede-se, nesta etapa, ao cálculo dos coeficientes utilizados no teste de normalidade de Shapiro–Wilk, conforme a formulação de Royston. Para o conjunto de dados considerado, tem-se $n=25$ observações.
+
+<br>
+
+## ***A estatística do teste*** $W$
+
+
+Calculada pela razão:  
+
+$$W = \frac{\left( \sum_{i=1}^{n} a_i x_{(i)} \right)^2}{\sum_{i=1}^{n} (x_i - \bar{x})^2}$$
+
+<br>
+Sendo: 
+
+$$
+\vec{\hat{ax}}=\begin{bmatrix}
+0.441802\\
+0.310852\\
+0.254467\\
+\vdots \\
+-0.4418\\
+\end{bmatrix}
+\underbrace{
+\begin{bmatrix}
+-1.11604612984445\\
+-1.08686625396935\\
+-1.04963588625130\\
+\vdots\\
+1.64377744336372
+\end{bmatrix}
+}_\text{{Resíduos ($\hat{\epsilon} = y - \hat{y}) \textcolor{orange}{\downarrow^A_Z}$}}
+$$
+
+$$\downarrow$$
+
+$$
+\vec{\hat{ax}}=\begin{bmatrix}
+-0.493071412\\
+-0.337854548\\
+-0.267097695\\
+\vdots \\
+-0.726224162
+\end{bmatrix}
+$$
+
+<br>
+Logo:
+
+$$
+\left( \sum_{i=1}^{n} a_i x_{(i)} \right)^2
+=((-0.493071412)+(-0.337854548)+(-0.267097695)+\cdots+(-0.726224162) )^2
+$$
+
+$$\downarrow$$
+
+$$
+\left( \sum_{i=1}^{n} a_i x_{(i)} \right)^2= 13.323484559
+$$
+
+<br>
+
+e a média de $x$:
+
+$$
+\bar{x}=\frac{1}{n}\sum_{i=1}^{n}y_i​−\hat{y_i}​
+$$
+$$\downarrow$$
+$$
+\bar{x}=\frac{(-1.116046)+(-1.086866)+(-1.049635)+\cdots+1.643777}{n} = -1.52E^{-14}
+$$
+
+<br>
+
+Então:
+
+$$
+x-\bar{x}=\begin{bmatrix}
+1.11604612984445\\
+1.08686625396935\\
+1.04963588625130\\
+\vdots\\
+1.64377744336372
+\end{bmatrix}
+-1.52E^{-14}\\
+$$
+
+$$\downarrow$$
+
+$$
+x-\bar{x}=\begin{bmatrix}
+1.11604612984444\\
+1.08686625396934\\
+1.04963588625129\\
+\vdots\\
+1.64377744336371
+\end{bmatrix}
+$$
+
+<br>
+
+Sendo:
+
+$$
+(x-\bar{x})^2=(x-\bar{x})^T(x-\bar{x})\\
+$$
+
+$$\downarrow$$
+
+$$
+(x-\bar{x})^2=
+\begin{bmatrix}
+1.11604612984444&
+1.08686625396934&
+\cdots&
+1.64377744336371
+\end{bmatrix}
+\begin{bmatrix}
+1.11604612984444\\
+1.08686625396934\\
+1.04963588625129\\
+\vdots\\
+1.64377744336371
+\end{bmatrix}
+$$
+
+$$\downarrow$$
+
+$$(x-\bar{x})^2=\begin{bmatrix}
+1.245558964\\
+1.181278254\\
+1.101735494\\
+\vdots\\
+2.702004283
+\end{bmatrix}
+$$
+
+<br>
+
+Então, a soma do quadro dos resíduos absolutos:
+
+$$
+\boxed{
+  \begin{aligned}
+&\sum(x-\bar{x})^2=1.245558964+1.181278254+1.101735494+\cdots+2.702004283
+  \end{aligned}
+}
+$$
+
+$$\downarrow$$
+
+$$
+\sum(x-\bar{x})^2= 13.91646807
+$$
+
+<br>
+
+Portanto, substituimos os valores da equação:
+
+$$
+\boxed{
+  \begin{aligned}
+&W = \frac{\left( \sum_{i=1}^{n} a_i x_{(i)} \right)^2}{\sum_{i=1}^{n} (x_i - \bar{x})^2}\\
+&W = \frac{13.323484559}{13.91646807}
+  \end{aligned}
+}
+$$
+
+$$\downarrow$$
+
+$$W = 0.957389798$$
+
+<br>
+
+## ***Transformação logarítmica de*** $W$
+
+<br>
+
+$p-value$ ***por interpolação linear***
+
+Considerando a Tabela de Quantis de $W$ para $n = 25$:
+
+<br>
+
+| $p-valor$ (Probabilidade) | Estatístico $W$ |
+|:---:|:---:|
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.01&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.888&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+|0.02| 0.901|
+|0.05| 0.918|
+|0.10| 0.931|
+|0.50| 0.964|
+|0.90| 0.981|
+|0.95| 0.985|
+|0.98| 0.988|
+|0.99| 0.989|
+
+<br>
+
+De acordo com a tabela de Quantis e considerando os parâmetros a seguir:
+
+ - $W=0.957389798;$
+ - $n = 25.$
+
+<br>
+
+Temos:  
+
+- $0.10 \le p \le 0.50;$
+- $0.931 \le W \le 0.964.$
+
+<br>
+
+Então:
+
+$$
+p-valor = p_{min}+\left( \frac{W - W_{min}}{W_{max} - W_{min}} \right) \times (p_{max} - p_{min})
+$$
+$$\downarrow$$
+$$
+p-valor \approx 0.10 + \left( \frac{0.957389798 - 0.931}{0.964 - 0.931} \right) \times (0.50 - 0.10)
+$$
+$$\downarrow$$
+$$
+p-valor \approx 0.419876344
+$$
+
+<br><br>
+
+***Aproximação do*** $p-value$ ***do teste de Shapiro-Wilk para*** $n>11$
+
+<br>
+
+Coeficientes dos polinômios $C_5$ e $C_6$
+
+<br>
+
+| Polinômio  | Coeficiente |  Valor |
+| :--------- | :---------: | -----: |
+| $C_5(x)$ | $c_{50}$ |   $-1.5861$ |
+| $C_5(x)$ | $c_{51}$ |  $-0.31082$ |
+| $C_5(x)$ | $c_{52}$ | $-0.083751$ |
+| $C_5(x)$ | $c_{53}$ | $0.0038915$ |
+| $C_6(x)$ | $c_{60}$ |   $-0.4803$ |
+| $C_6(x)$ | $c_{61}$ | $-0.082676$ |
+| $C_6(x)$ | $c_{62}$ | $0.0030302$ |
+
+<br>
+
+Sendo:
+- $W=0.957364809687$
+- $n=25$
+
+<br>
+
+Calculamos $y$:
+
+$$ 
+\boxed{
+  \begin{aligned}
+    y&=\ln(1-W) \\
+    y&=\ln(1-0.957364809687) 
+  \end{aligned}
+}
+$$ 
+$$ \downarrow $$ 
+$$ y=-3.155075303$$ 
+
+<br>
+
+Calculamos $x$:
+
+$$ 
+\boxed{
+  \begin{aligned}
+    x&=\ln(n)\\
+    x&=\ln(25) 
+  \end{aligned}
+}
+$$ 
+$$ \downarrow $$ 
+$$ x=3.218875825$$ 
+
+<br>
+
+Calculamos $m$:
+
+$$ 
+\boxed{
+  \begin{aligned}
+    m&=c_1+c_2x+c_3x^2+c_4x^3 \\
+    m&=-1.5861-0.31082x-0.083751x^2+0.0038915x^3 \\
+    m&=-1.5861-0.31082(3.218875825)-0.083751(3.218875825)^2+0.0038915(3.218875825)^3
+  \end{aligned}
+}
+$$ 
+
+$$ \downarrow $$ 
+$$m=-3.324562072$$
+
+<br>
+
+Calculamos $s$:
+
+$$
+\boxed{
+  \begin{aligned}
+    s&=e^{c_5+c_6x+c_7x^2}\\
+    s&=e^{-0.4803+-0.082676x+0.0030302x^2}\\
+    s&=e^{-0.4803+-0.082676(3.218875825)+0.0030302(3.218875825)^2}
+  \end{aligned}
+}
+$$ 
+$$ \downarrow $$ 
+$$s=0.489178715$$
+
+<br>
+
+Calculamos $z$:
+
+$$
+\boxed{
+  \begin{aligned}  
+    z&=\frac{y-m}{s}\\
+    z&=\frac{-3.155075303-(-3.324562072)}{0.489178715}
+  \end{aligned}
+}
+$$ 
+$$ \downarrow $$ 
+$$z=0.346472085$$
+
+<br>
+
+Finalmente $p$:
+
+$$
+\boxed{
+  \begin{aligned} 
+    p&=1-\Phi(z)\\
+    p&=1-\Phi(0.346472085)
+  \end{aligned}
+}
+$$
+
+$$ \downarrow $$ 
+
+$$p-valor = 0.364493979877$$
+
+<br>
+
+### ***Interpretação***
+
+Como o p-valor obtido ($0.36449$) é superior a $0.05$, não há evidência estatística suficiente para rejeitar a hipótese nula ($H_0$), confirmando que os dados seguem uma distribuição normal.
+
+![alt text](image-11.png)
+
+</div>
 
 
 
