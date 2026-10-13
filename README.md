@@ -11,7 +11,7 @@
 
 A **Álgebra Linear** é a base matemática que fornece estruturas e operações fundamentais para representar, organizar e transformar dados por meio de vetores, matrizes e tensores. Essas estruturas permitem otimizar algoritmos de aprendizado de máquina e realizar operações matemáticas de forma eficiente em grandes volumes de informação.
 
-Ao final desta leitura, deveremos ser capazes de compreender as técnicas utilizadas e a intuição que fundamenta a aplicação dos métodos e ferramentas no processo de modelagem de risco de crédito. Além dos fundamentos práticos e teóricos sobre PD, EAD, LGD, ***Application Score, Behavior Score e Recovery Score***, também serão apresentados conceitos relacionados à segmentação e ao monitoramento de carteiras de crédito, classificação de operações em diferentes estágios de risco (***Stages***), modelagem de capital em risco (VaR) e RAROC (***Risk-Adjusted Return on Capital***), utilizados na gestão e avaliação do risco de crédito.
+Ao longo deste material, construiremos gradualmente a compreensão das técnicas utilizadas e da intuição que fundamenta sua aplicação em modelagem de risco de crédito. Além dos fundamentos práticos e teóricos sobre PD, EAD, LGD, ***Application Score, Behavior Score e Recovery Score***, também serão apresentados conceitos relacionados à segmentação e ao monitoramento de carteiras de crédito, classificação de operações em diferentes estágios de risco (***Stages***), modelagem de capital em risco (VaR) e RAROC (***Risk-Adjusted Return on Capital***), utilizados na gestão e avaliação do risco de crédito.
 
 ### ***Vetores***
 
